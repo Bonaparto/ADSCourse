@@ -59,7 +59,6 @@ struct de {
     void pop_front() {
         if(current != NULL && current->front->next != NULL) {
             cout << current->front->val << endl;
-            
             current->front = current->front->next;
         } else if(current != NULL && current->front->next == NULL) {
             cout << current->val << endl;
@@ -69,6 +68,7 @@ struct de {
             return;
         }
         cnt--;
+        if(cnt == 0) current = NULL;
         return;
     }
 
@@ -81,13 +81,14 @@ struct de {
         }
         else {
             cout << current->val << endl;
+            current->prev->front = current->front; 
             current = current->prev;
             if(current->prev == NULL) {
                 current->front = current;
-                cout << "wtf" << endl;
             }
             cnt--;
         }
+        if(cnt == 0) current = NULL;
         return;
     }
 
@@ -117,7 +118,7 @@ struct de {
         cnt = 0;
     }
 };
-
+    
 int main() {
     string s = "";
     de z;
