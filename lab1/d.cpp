@@ -1,27 +1,26 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
+#include <queue>
 using namespace std;
 
-struct list {
-    long long grade;
-    string surname;
-};
-
-bool sort_by_grade(list a, list b) {
-    return a.grade < b.grade;
-}
-
 int main(){
-    vector <list> v;
-    list l;
-    long long n; string s;
+    queue <string> d, t, e;
+    int n; string s;
     while(cin >> n) {
         cin >> s;
-        l.grade = n;
-        l.surname = s;
-        v.push_back(l);
+        if(n == 9) d.push(s);
+        else if (n == 10) t.push(s);
+        else e.push(s);
     }
-    sort(v.begin(), v.end(), sort_by_grade);
-    for(int i = 0; i < v.size(); ++i) cout << v[i].grade << " " << v[i].surname << endl;
+    while(!d.empty()) {
+        cout << "9 " << d.front() << endl;
+        d.pop();
+    }
+    while(!t.empty()) {
+        cout << "10 " << t.front() << endl;
+        t.pop();
+    }
+    while(!e.empty()) {
+        cout << "11 " << e.front() << endl;
+        e.pop();
+    }
 }

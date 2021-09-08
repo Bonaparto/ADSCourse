@@ -12,7 +12,7 @@ int main(){
         d1.push_back(x);
     }
     //cout << d.size() << endl << d1.size() << endl;
-    for(cnt = 1; cnt <= 10e6; ++cnt) {
+    for(cnt = 1; cnt <= 1e6; ++cnt) {
         //cout << d.back() << " " << d1.back() << endl;
         if(d.front() > d1.front()) {
             if(d.front() == 9 && d1.front() == 0) {
@@ -20,8 +20,7 @@ int main(){
                 d.pop_front();
                 d1.push_back(d1.front());
                 d1.pop_front();
-            }
-            else {
+            } else {
                 d.push_back(d.front());
                 d.pop_front();
                 d.push_back(d1.front());
@@ -29,10 +28,17 @@ int main(){
             }
         }
         else {
-            d1.push_back(d.front());
-            d.pop_front();
-            d1.push_back(d1.front());
-            d1.pop_front();
+            if(d1.front() == 9 && d.front() == 0) {
+                d.push_back(d.front());
+                d.pop_front();
+                d.push_back(d1.front());
+                d1.pop_front();
+            } else {
+                d1.push_back(d.front());
+                d.pop_front();
+                d1.push_back(d1.front());
+                d1.pop_front();
+            }
         }
         if(d.size() == 0) {
             cout << "second " << cnt;
@@ -44,5 +50,6 @@ int main(){
         }
         //cout << "wtf " << d.size() << " " << d1.size() << endl;
     }
+    //cout << (10e6 == 1000000) << endl; 
     cout << "botva";    
 }
