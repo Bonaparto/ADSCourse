@@ -28,20 +28,17 @@ int main(){
                 st.pop();
                 l += st.top();
                 st.pop();
-            }
-            else if(s[i] == '-') {
+            } else if(s[i] == '-') {
                 l -= st.top();
                 st.pop();
                 l += st.top();
                 st.pop();
-            }
-            else {
+            } else {
                 l += st.top();
                 st.pop();
                 l *= st.top();
                 st.pop();
             }
-            // cout << l << endl;
             st.push(l);
         }
     }
