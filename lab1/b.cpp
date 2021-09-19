@@ -87,20 +87,15 @@ int main(){
         if(s == "push") {
             long long x; cin >> x;
             z.push(x);
-        }
-        else if(s == "pop") { 
+        } else if(s == "pop") { 
             z.pop();
-        }
-        else if(s == "front") { 
+        } else if(s == "front") { 
             z.getFront();
-        }
-        else if(s == "size") { 
+        } else if(s == "size") { 
             cout << cnt << endl;
-        }
-        else if(s == "clear") { 
+        } else if(s == "clear") { 
             z.clear();
-        }
-        else if(s == "exit"){
+        } else if(s == "exit"){
             cout << "bye" << endl;
         }
     }

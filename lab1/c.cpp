@@ -124,30 +124,22 @@ int main() {
         if (s == "push_front") {
             long long x; cin >> x;
             z.push_front(x);
-        }
-        else if (s == "push_back") {
+        } else if(s == "push_back") {
             long long x; cin >> x;
             z.push_back(x);
-        }
-        else if (s == "pop_front") {
+        } else if(s == "pop_front") {
             z.pop_front();
-        }
-        else if (s == "pop_back") { 
+        } else if(s == "pop_back") { 
             z.pop_back();
-        }
-        else if (s == "back") { 
+        } else if(s == "back") { 
             z.back();
-        }
-        else if (s == "size") { 
+        } else if(s == "size") { 
             cout << cnt << endl;
-        }
-        else if (s == "clear") { 
+        } else if(s == "clear") { 
             z.clear();
-        }
-        else if (s == "front") { 
+        } else if(s == "front") { 
             z.front();
-        }
-        else if (s == "exit"){
+        } else if(s == "exit"){
             cout << "bye" << endl;
         }
     }

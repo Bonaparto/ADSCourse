@@ -37,6 +37,7 @@ int main(){
     
     if(f) return 0;
     int cnt = 2;
+
     while(q.size() != 0) {
         for(int i = 0; i < q.front(); ++i) fout << cnt << " " << 1 << endl;
         q.pop(); cnt++;
@@ -72,9 +73,5 @@ int main(){
         st1.pop();    
     }
     r = st.size();
-    
     for(int i = 0; i < r; ++i) fout << 2 << " " << 1 << endl;
 }
-
-
-// use deck, time limit error;

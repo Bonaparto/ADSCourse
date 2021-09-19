@@ -11,7 +11,6 @@ int main(){
         int x; cin >> x;
         d1.push_back(x);
     }
-
     for(cnt = 1; cnt <= 1e6; ++cnt) {
         if(d.front() > d1.front()) {
             if(d.front() == 9 && d1.front() == 0) {

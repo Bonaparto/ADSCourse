@@ -17,15 +17,13 @@ int main(){
                     cout << "no";
                     return 0;
                 }
-            }
-            else if(c == ')') {
+            } else if(c == ')') {
                 if(q.top() == '(') q.pop();
                 else {
                     cout << "no";
                     return 0;
                 }
-            }
-            else {
+            } else {
                 if(q.top() == '{') q.pop();
                 else {
                     cout << "no";
