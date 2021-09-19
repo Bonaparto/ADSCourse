@@ -41,7 +41,6 @@ int main(){
                 l *= st.top();
                 st.pop();
             }
-            // cout << l << endl;
             st.push(l);
         }
     }

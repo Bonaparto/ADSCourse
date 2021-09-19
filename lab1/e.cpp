@@ -11,9 +11,8 @@ int main(){
         int x; cin >> x;
         d1.push_back(x);
     }
-    //cout << d.size() << endl << d1.size() << endl;
+
     for(cnt = 1; cnt <= 1e6; ++cnt) {
-        //cout << d.back() << " " << d1.back() << endl;
         if(d.front() > d1.front()) {
             if(d.front() == 9 && d1.front() == 0) {
                 d1.push_back(d.front());
@@ -48,8 +47,7 @@ int main(){
             cout << "first " << cnt;
             return 0;
         }
-        //cout << "wtf " << d.size() << " " << d1.size() << endl;
-    }
-    //cout << (10e6 == 1000000) << endl; 
+        
+    } 
     cout << "botva";    
 }

@@ -27,6 +27,14 @@ struct que {
     }
 
     void pop() {
+        // if(current == NULL) cout << "error" << endl;
+        // else if(current->front->next == NULL) {
+        //     cout << current->val << endl;
+        //     current = NULL;
+        // } else {
+        //     cout << current->front->val << endl;
+        //     current->front = current->front->next;
+        // }
         if(current != NULL && current->front->next != NULL) {
             cout << current->front->val << endl;
             current->front = current->front->next;
@@ -43,12 +51,11 @@ struct que {
 
     void push(long long y) {
         node * item = new node(y);
-        if(current == NULL) {
+        if (current == NULL) {
             current = item;
             current->front = item;
             current->next = NULL;
-        }
-        else {
+        } else {
             item->next = NULL;
             item->front = current->front;
             current->next = item;
@@ -60,7 +67,7 @@ struct que {
 
     void clear() {
         while(1) {
-            if(current == NULL || current->front->next == NULL) {
+            if (current == NULL || current->front->next == NULL) {
                 current = NULL;
                 break;
             }
@@ -69,6 +76,7 @@ struct que {
         cnt = 0;
         cout << "ok" << endl;
     }
+
 };
 
 int main(){

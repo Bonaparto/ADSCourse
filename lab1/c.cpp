@@ -8,7 +8,7 @@ struct node {
     node * next;
     node * prev;
     node * front;
-    node(long long x) {
+    node (long long x) {
         val = x;
         next = NULL;
         prev = NULL;
@@ -24,7 +24,7 @@ struct de {
 
     void push_front(long long x) {
         node * item = new node(x);
-        if(current == NULL) {
+        if (current == NULL) {
             current = item;
             current->prev = NULL;
             current->next = NULL;
@@ -41,7 +41,7 @@ struct de {
 
     void push_back(long long x) {
         node * item = new node(x);
-        if(current == NULL) {
+        if (current == NULL) {
             current = item;
             current->prev = NULL;
             current->next = NULL;
@@ -57,10 +57,10 @@ struct de {
     }
 
     void pop_front() {
-        if(current != NULL && current->front->next != NULL) {
+        if (current != NULL && current->front->next != NULL) {
             cout << current->front->val << endl;
             current->front = current->front->next;
-        } else if(current != NULL && current->front->next == NULL) {
+        } else if (current != NULL && current->front->next == NULL) {
             cout << current->val << endl;
             current = NULL;
         } else {
@@ -68,13 +68,13 @@ struct de {
             return;
         }
         cnt--;
-        if(cnt == 0) current = NULL;
+        if (cnt == 0) current = NULL;
         return;
     }
 
-    void pop_back() {
-        if(current == NULL) cout << "error" << endl;
-        else if(current->prev == NULL) {
+    void pop_back() { 
+        if (current == NULL) cout << "error" << endl;
+        else if (current->prev == NULL) {
             cout << current->val << endl; 
             current = NULL;
             cnt--;
@@ -83,22 +83,19 @@ struct de {
             cout << current->val << endl;
             current->prev->front = current->front; 
             current = current->prev;
-            if(current->prev == NULL) {
-                current->front = current;
-            }
             cnt--;
         }
-        if(cnt == 0) current = NULL;
+        if (cnt == 0) current = NULL;
         return;
     }
 
     void front() {
-        if(current != NULL) cout << current->front->val << endl;
+        if (current != NULL) cout << current->front->val << endl;
         else cout << "error" << endl;
     }
 
     void back() {
-        if(current != NULL) cout << current->val << endl;
+        if (current != NULL) cout << current->val << endl;
         else cout << "error" << endl;
     }
 
@@ -108,7 +105,7 @@ struct de {
 
     void clear() {
         while(1) {
-            if(current == NULL || current->prev == NULL) {
+            if (current == NULL || current->prev == NULL) {
                 current = NULL;
                 break;
             }
@@ -122,35 +119,35 @@ struct de {
 int main() {
     string s = "";
     de z;
-    while(s != "exit") {
+    while (s != "exit") {
         cin >> s;
-        if(s == "push_front") {
+        if (s == "push_front") {
             long long x; cin >> x;
             z.push_front(x);
         }
-        else if(s == "push_back") {
+        else if (s == "push_back") {
             long long x; cin >> x;
             z.push_back(x);
         }
-        else if(s == "pop_front") {
+        else if (s == "pop_front") {
             z.pop_front();
         }
-        else if(s == "pop_back") { 
+        else if (s == "pop_back") { 
             z.pop_back();
         }
-        else if(s == "back") { 
+        else if (s == "back") { 
             z.back();
         }
-        else if(s == "size") { 
+        else if (s == "size") { 
             cout << cnt << endl;
         }
-        else if(s == "clear") { 
+        else if (s == "clear") { 
             z.clear();
         }
-        else if(s == "front") { 
+        else if (s == "front") { 
             z.front();
         }
-        else if(s == "exit"){
+        else if (s == "exit"){
             cout << "bye" << endl;
         }
     }
