@@ -3,9 +3,11 @@ using namespace std;
 
 long long cnt = 0;
 
+// 1 
+ 
 struct node {
-    long long val;
-    node * prev;
+    long long val; // 5
+    node * prev;  // 4 <- 
     node(long long x) {
         val = x;
         prev = NULL;
@@ -13,10 +15,13 @@ struct node {
 };
 
 struct st {
+
     node * tail;
     st() { 
         tail = NULL;
     }
+
+    // 1 <- 2 <- 3 
 
     void getTop() {
         if(tail != NULL) cout << tail->val << endl; 
@@ -40,12 +45,15 @@ struct st {
     }
 
     void push(long long y) {
+        // tail = NULL;
         node * item = new node(y);
+        // link = NULL, val = y;
         if(tail == NULL) { 
             tail = item;
             tail->prev = NULL;
         }
-        else {
+        else { 
+            // 1 <- 2 <- 3
             item->prev = tail;
             tail = item;
         }
@@ -55,7 +63,7 @@ struct st {
 
     void clear() {
         while(1) {
-            if(tail == NULL || tail->prev == NULL) {
+            if(tail == NULL || tail->prev == NULL) {  
                 tail = NULL;
                 break;
             }
@@ -64,6 +72,7 @@ struct st {
         cnt = 0;
         cout << "ok" << endl;
     }
+    
 };
 
 int main(){
