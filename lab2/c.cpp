@@ -1,136 +1,43 @@
 #include <fstream>
+#include <map>
+#include <vector>
 #include <algorithm>
 using namespace std;
 
 ifstream fin("input.txt");
 ofstream fout("output.txt");
 
-struct node {
-    long long cnt;
-    string val;
-    node * prev;
-    node * next;
-    node(string s) {
-        val = s;
-        cnt = 1;
-        prev = NULL;
-        next = NULL;
+bool string_cmp(string a, string b) {
+    for(long long i = 0; i < min(a.size(), b.size()); ++i) {
+        if(a[i] > b[i]) return 0;
+        else if(a[i] < b[i]) return 1;
     }
-};
+    if(a.size() < b.size()) return 1;
+    return 0;
+}
 
-struct mp {
-    node * head;
-    node * tail;
-    mp() {
-        head = NULL;
-        tail = NULL;
+bool cmp(pair <string, int> p1, pair <string, int> p2) {
+    if(p1.second == p2.second) return string_cmp(p1.first, p2.first);
+    return p1.second > p2.second;
+}
+
+void sort_map(map <string, int>& m) {
+    vector <pair <string, int> > v;
+    for(auto& it : m) {
+        v.push_back(it);
     }
+    sort(v.begin(), v.end(), cmp);
 
-    node * find(string s) {
-        node * temp = head;
-        node * result = NULL;
-        while(temp != NULL) { 
-            if(temp->val == s) {
-                result = temp;
-                break;
-            }
-            temp = temp->next;
-        }
-        return result;
-    }
+    for(int i = 0; i < v.size(); ++i) fout << v[i].first << " " << v[i].second << endl;
+}
 
-    // Need to optimize the sort;
-    node * findnearest(node * ss) {
-        node * temp = head;
-        node * temp1 = tail;
-        while(temp != NULL && temp1 != NULL) {
-            if(ss->cnt > temp->cnt || (ss->cnt == temp->cnt && compare(ss->val, temp->val))) return temp;
-            //if(ss->cnt > temp1->cnt || (ss->cnt == temp1->cnt && compare///(ss->val, temp1->val))) return temp1;
-            if(temp != NULL) temp = temp->next;
-            //if(tail != NULL) tail = tail->prev;
-        }
-        return temp;
-    }
-
-    bool compare(string a, string b) {
-        for(long long i = 0; i < min(a.size(), b.size()); ++i) {
-            if(a[i] > b[i]) return 0;
-            else if(a[i] < b[i]) return 1;
-        }
-        if(a.size() < b.size()) return 1;
-        return 0;
-    }
-
-    void addNew(string s) {
-        node * temp = find(s);
-        if(temp == NULL) {
-            node * newObj = new node(s);
-            if(head == NULL) {
-                head = tail = newObj;
-            } else {
-                node * temp1 = findnearest(newObj);
-                if(temp1 == NULL) {
-                    tail->next = newObj;
-                    newObj->prev = tail;
-                    tail = newObj;
-                } else if(temp1->prev == NULL ) {
-                    temp1->prev = newObj;
-                    newObj->next = temp1;
-                    head = newObj;
-                } else {
-                    temp1->prev->next = newObj;
-                    newObj->next = temp1;
-                    newObj->prev = temp1->prev;
-                    temp1->prev = newObj;
-                }
-            }
-        } else {
-            temp->cnt = temp->cnt + 1;
-            if(temp->prev != NULL && temp->next != NULL) {
-                temp->prev->next = temp->next;
-                temp->next->prev = temp->prev;
-            } else if(temp->prev == NULL && temp->next != NULL) {
-                head = head->next;
-                temp->next->prev = NULL;
-            } else if(temp->prev != NULL && temp->next == NULL) {
-                tail = tail->prev;
-                temp->prev->next = NULL;
-            } else return;
-            temp->next = NULL;
-            temp->prev = NULL;
-            node * temp1 = findnearest(temp);
-            if(temp1 == NULL) {
-                tail->next = temp;
-                temp->prev = tail;
-                tail = temp;
-            } else if(temp1->prev == NULL ) {
-                temp1->prev = temp;
-                temp->next = temp1;
-                head = temp;
-            } else {
-                temp1->prev->next = temp;
-                temp->next = temp1;
-                temp->prev = temp1->prev;
-                temp1->prev = temp;
-            }
-        }
-    }
-
-    void print() {
-        node * temp = head;
-        while(temp != NULL) {
-            fout << temp->val << " " << temp->cnt << endl;
-            temp = temp->next;
-        }
-    }
-
-};
-
-int main() {
+int main(){
+    map <string, int> mp;
     string s;
-    mp * m = new mp();
     while(fin >> s) {
-        m->addNew(s);
+        mp[s]++;
     }
-    m->print();
+    map <string, int> :: iterator it;
+    sort_map(mp);
+    // for(it = mp.begin(); it != mp.end(); ++it) fout << (*it).first << " " << (*it).second << endl;
 }

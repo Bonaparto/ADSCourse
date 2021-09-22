@@ -1,4 +1,7 @@
+she 3
+was 3
+wbs 3
+yas 3
+a 2
 he 2
-was 2
 i 1
-she 1
