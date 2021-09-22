@@ -1,3 +1,4 @@
+he 2
 was 2
-he 1
+i 1
 she 1
