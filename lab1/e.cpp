@@ -46,6 +46,7 @@ int main(){
             cout << "first " << cnt;
             return 0;
         }
-    }
+        
+    } 
     cout << "botva";    
 }
