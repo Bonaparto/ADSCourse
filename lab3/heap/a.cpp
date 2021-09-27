@@ -23,7 +23,15 @@ struct heap {
     }
 
     void increase(int num, int x) {
-
+        int i = --num;
+        h[num] += x;
+        int p = (i - 1) / 2;
+        while(i && h[i] > h[p]) {
+            swap(h[i], h[p]);
+            i = p;
+            p = (i - 1) / 2;
+        }
+        cout << i + 1 << endl;
     }
 
     void print() {
@@ -32,7 +40,6 @@ struct heap {
             cout << h[i] << " ";
             i++;
         }
-
     }
 };
 
