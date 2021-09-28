@@ -40,16 +40,23 @@ struct heap {
         }
         x--;
         int rem = h[x];
-        while(x * 2 + 1 < hs) {
-            int c1 = x * 2 + 1;
-            int c2 = x * 2 + 2;
-            if(c2 < hs && h[c2] > h[c1] && h[c2] > h[x]) {
-                swap(h[c2], h[x]);
-                x = c2;
-            } else if(h[c1] > h[x]) {
-                swap(h[c1], h[x]);
-                x = c1;
-            } else break;
+        if(x * 2 + 1 < hs) { 
+            while(x * 2 + 1 < hs) {
+                int c1 = x * 2 + 1;
+                int c2 = x * 2 + 2;
+                if(c2 < hs && h[c2] > h[c1] && h[c2] > h[x]) {
+                    swap(h[c2], h[x]);
+                    x = c2;
+                } else if(h[c1] > h[x]) {
+                    swap(h[c1], h[x]);
+                    x = c1;
+                } else break;
+            }
+        } else { 
+            while(x + 1 < hs) {
+                h[x] = h[x+1];
+                x++;
+            }
         }
         hs--;
         fout << rem << endl;
