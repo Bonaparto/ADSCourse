@@ -81,11 +81,17 @@ struct mp {
                 }
             }
         } else {
-            temp->cnt++;
-            if(temp->prev != NULL && temp->next != NULL) temp->prev = temp->next;
-            else if(temp->prev == NULL && temp->next != NULL) temp->next->prev = NULL;
-            else if(temp->prev != NULL && temp->next == NULL) temp->prev->next = NULL;
-            else return;
+            temp->cnt = temp->cnt + 1;
+            if(temp->prev != NULL && temp->next != NULL) {
+                temp->prev->next = temp->next;
+                temp->next->prev = temp->prev;
+            } else if(temp->prev == NULL && temp->next != NULL) {
+                temp->next->prev = NULL;
+            } else if(temp->prev != NULL && temp->next == NULL) {
+                temp->prev->next = NULL;
+            } else return;
+            temp->next = NULL;
+            temp->prev = NULL;
             node * temp1 = findnearest(temp);
             if(temp1 == NULL) {
                 tail->next = temp;
