@@ -38,9 +38,9 @@ struct heap {
             fout << -1 << endl;
             return;
         }
-        x--;
-        int rem = h[x];
-        if(x * 2 + 1 < hs) { 
+        int rem = h[--x];
+        h[x] = h[--hs];
+        if(h[x] < rem) {
             while(x * 2 + 1 < hs) {
                 int c1 = x * 2 + 1;
                 int c2 = x * 2 + 2;
@@ -52,13 +52,14 @@ struct heap {
                     x = c1;
                 } else break;
             }
-        } else { 
-            while(x + 1 < hs) {
-                h[x] = h[x+1];
-                x++;
+        } else {
+            int p = (x - 1) / 2;
+            while(x && h[x] > h[p]) {
+                swap(h[x], h[p]);
+                x = p;
+                p = (x - 1) / 2;
             }
         }
-        hs--;
         fout << rem << endl;
     }
 
