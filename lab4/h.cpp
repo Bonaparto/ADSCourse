@@ -26,15 +26,20 @@ private :
         return current;
     }
 
-    void is_balanced(node * current, int l, int r) {
+    int is_balanced(node * current, int len) {
+        int l = 0, r = 0;
         if(current != NULL) {
-            is_balanced(current->left);
-            if((current->left != NULL && current->right == NULL) || 
-            (current->left == NULL && current->right != NULL)) {
-                cout << current->val << " ";
+            l = is_balanced(current->left, 0);
+            r = is_balanced(current->right, 0);
+            if(abs(l - r) > 1) {
+                cout << "NO";
+                exit(0);
             }
-            is_balanced(current->right);
-        }
+            len += max(l, r);
+            if(current != root) len++;
+        }  
+        if(current == root) return abs(l - r);
+        return len;
     }
 
 public:       
@@ -48,8 +53,8 @@ public:
         if(root == NULL) root = res;
     }
 
-    bool is_balanced() {
-        is_balanced(root, 0, 0);
+    int is_balanced() {
+        return is_balanced(root, 0);
     }
 };
 
@@ -62,5 +67,5 @@ int main(){
         b.add(n);
         cin >> n;
     }
-    cout << (b.is_balanced() ? "YES":"NO");
+    cout << (b.is_balanced() < 2 ? "YES":"NO");
 }
