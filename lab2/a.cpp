@@ -42,7 +42,7 @@ struct mp {
     node * findnearest(string ss) {
         node * temp = head;
         while(temp != NULL) {
-            if(compare(ss, temp->val)) break;l;
+            if(compare(ss, temp->val)) break;
             temp = temp->next;
         }
         return temp;

@@ -86,8 +86,10 @@ struct mp {
                 temp->prev->next = temp->next;
                 temp->next->prev = temp->prev;
             } else if(temp->prev == NULL && temp->next != NULL) {
+                head = head->next;
                 temp->next->prev = NULL;
             } else if(temp->prev != NULL && temp->next == NULL) {
+                tail = tail->prev;
                 temp->prev->next = NULL;
             } else return;
             temp->next = NULL;
