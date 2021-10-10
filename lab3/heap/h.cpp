@@ -35,9 +35,10 @@ struct heap {
     }
 
     void sort(int x) {
-        if(2 * x + 2 < hs) sort(2 * x + 2);
-        if(2 * x + 1 < hs) sort(2 * x + 1);
-        if(2 * x + 1 < hs) sift_down(x);
+        sift_down(x);
+        // if(2 * x + 2 < hs) sort(2 * x + 2);
+        // if(2 * x + 1 < hs) sort(2 * x + 1);
+        // if(2 * x + 1 < hs) sift_down(x);
     } 
 
     int extract() {
@@ -65,7 +66,8 @@ int main(){
         h.add(x);
     }
 
-    h.sort(0);
+    for(int i = n / 2 - 1; i >= 0; --i) h.sort(i);
+    //h.sort(0);
     
     for(int i = 0; i < n; ++i) {
         h.print();
