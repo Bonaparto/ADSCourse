@@ -1,7 +1,10 @@
-#include <iostream>
+#include <fstream>
 
 
 using namespace std;
+
+ifstream fin("input.txt");
+ofstream fout("output.txt");
 
 void merge(int arr[], int l, int m, int r){
     int i, j, k;
@@ -58,15 +61,17 @@ void mergeSort(int arr[], int l, int r){
 
 void printArray(int arr[], int n){
     for(int i = 0; i < n; ++i){
-        cout << arr[i] << " ";
+        fout << arr[i] << " ";
     }
-    cout << endl;
+    fout << endl;
 }
 
 int main(){
 
-    int arr[] = {12, 11, 13, 51, 6, 7};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int n;
+    fin >> n;
+    int arr[n];
+    for(int i = 0; i < n; ++i) fin >> arr[i];
 
     printArray(arr, n);
 
