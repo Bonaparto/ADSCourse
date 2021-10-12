@@ -47,8 +47,8 @@ void merge_sort(int a[], int m, int l, int r) {
 void merge_sort(int a[], int l, int r) {
     if(l < r) {
         int m = l + (r - l) / 2;
-        merge_sort(a, m + 1, r);
         merge_sort(a, l, m);
+        merge_sort(a, m + 1, r);
         merge_sort(a, m, l, r);
     }
 }
