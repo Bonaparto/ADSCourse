@@ -23,7 +23,7 @@ struct heap {
             i = p;
             p = (i - 1) / 2;
         }
-        if(hs == 1 ||) return i;
+        if(hs == 1) return i;
         else return -1; 
     }
     
