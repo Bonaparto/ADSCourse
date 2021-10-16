@@ -26,6 +26,10 @@ struct heap {
         if(hs == 1) return i;
         else return -1; 
     }
+
+    int find(int x) {
+        
+    }
     
 };
 
