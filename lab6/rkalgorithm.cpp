@@ -34,6 +34,7 @@ bool check(string s, string pat) {
             res = true;
             break;
         }
+        cout << cur << endl;
     }
     return res;
 } 
