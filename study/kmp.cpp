@@ -17,8 +17,6 @@ vector<int> f(string s){
    return pi;
 }
 
-CDCDFBFCDCDFDFCDCDFBFCDCDFDFCDC
-CDCDFBFCDCDFDFCDCDFBFCDCDFDF
 int main(){
 
     string s, t;

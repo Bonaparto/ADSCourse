@@ -5,6 +5,7 @@ using namespace std;
 
 int max_repeat(string s) {
     int n = s.size();
+    if(n == 0) return 0;
     vector <int> pi(n); 
     for(int i = 1; i < n; ++i) {
         int j = pi[i-1];
@@ -15,7 +16,7 @@ int max_repeat(string s) {
         pi[i] = j;
     }
     // cout << pi[n-1] << " " << n % (n - pi[n-1] != 0) << endl; 
-    if(pi[n-1] < ceil(n / 2) || n % (n - pi[n-1]) != 0) return n;
+    if(pi[n-1] == 0 || n % (n - pi[n-1]) != 0) return 1;
     return n / (n - pi[n-1]);
 }
 
