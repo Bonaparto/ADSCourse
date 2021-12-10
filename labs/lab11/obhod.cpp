@@ -17,7 +17,6 @@ int dfs(int ans, int v) {
             ans += dfs(0, i);
         }
     }
-    fout << v << " " << ans << endl;
     return ans;
 }
 
