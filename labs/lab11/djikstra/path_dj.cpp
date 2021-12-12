@@ -22,7 +22,7 @@ int main() {
 
     for(int i = 0; i < n; ++i) {
         used[i] = 0;
-        d[st] = inf;
+        d[i] = inf;
     }
     --st; --end;
     d[st] = 0;
@@ -51,8 +51,8 @@ int main() {
         }
         ans.push_back(st);
         reverse(ans.begin(), ans.end());
-        for(auto i: ans) {
-            fout << i + 1 << " ";
+        for(int i = 0; i < ans.size(); ++i) {
+            fout << ans[i] + 1 << " ";
         }
     }
 }
