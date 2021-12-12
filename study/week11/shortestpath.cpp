@@ -7,8 +7,8 @@ ifstream fin("input.txt");
 ofstream fout("output.txt");
 
 int main() {
-    int n;
-    fin >> n;
+    int n, st, end;
+    fin >> n >> st >> end;
     bool used[n];
     int d[n];
     int a[n][n];
@@ -17,18 +17,17 @@ int main() {
     for(int i = 0; i < n; ++i) {
         for(int j = 0; j < n; ++j) {
             fin >> a[i][j];
-            if(a[i][j] == 0) a[i][j] = inf;
+            if(a[i][j] == -1) a[i][j] = inf;
         }
     }
-    int s;
-    fin >> s;
-    s--;
+    st--;
+    end--;
 
     for(int i = 0; i < n; ++i) {
         d[i] = inf;
         used[i] = false;
     }
-    d[s] = 0;
+    d[st] = 0;
 
     for(int i = 0; i < n; ++i) {
         int v = -1;
@@ -45,7 +44,6 @@ int main() {
             d[j] = min(d[j], d[v] + a[v][j]);
         }
     }
-    for(int i = 0; i < n; ++i) {
-        fout << d[i] << " ";
-    }
+    if(d[end] >= inf) fout << -1;
+    else fout << d[end];
 }
