@@ -48,6 +48,7 @@ void solve() {
                 d[u] = d[v] + w;
                 pq.push({d[u], u});
             }
+            used[u] = true;
         }
     }
     for(int i = 0; i < n; ++i) {
