@@ -1,4 +1,4 @@
-#include <fstream>
+ #include <fstream>
 #include <vector>
 using namespace std;
 
@@ -34,9 +34,9 @@ int main(){
         }
         if(d[v] >= inf) break;
         used[v] = true;
-        for(int i = 0; i < graph[v].size(); ++i) {
-            int u = graph[v][i].first;
-            int w = graph[v][i].second;
+        for(int j = 0; j < graph[v].size(); ++j) {
+            int u = graph[v][j].first;
+            int w = graph[v][j].second;
             d[u] = min(d[u], d[v] + w);
         }
     } 

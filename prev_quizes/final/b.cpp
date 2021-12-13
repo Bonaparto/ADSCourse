@@ -24,7 +24,6 @@ void bfs(int st, int end) {
             q.push(temp - 1);
             p[temp-1] = temp;
         }
-        fout << temp << endl;
     }
     vector <long long> ans;
     for(long long i = end; i != st; i = p[i]) {
